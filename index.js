@@ -18,18 +18,16 @@ app.use(express.static(__dirname + '/public'))
 app.get('/', function(request, response) {
   response.send('Hello World!')
 });
-app.get('/auth/github',
+app.get('/auth/springrole',
   passport.authenticate('springrole'));
 
-app.get('/auth/github/callback', 
+app.get('/auth/springrole/callback', 
   passport.authenticate('springrole', { failureRedirect: '/auth/github' }),
   function(req, res) {
-    res.redirect('/auth/springrole/callback');
+    res.jsonp({
+    	'status': 'OK'
+    });
   });
-
-app.get('/auth/springrole/callback', function(request, response) {
-  response.send('Hello World!')
-})
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
