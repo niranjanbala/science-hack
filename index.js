@@ -6,7 +6,7 @@ var passport = require('passport'),
 passport.use(new SpringRoleStrategy({
     clientID: '8d79eedc',
     clientSecret: '841b0dc36c101464d589baf61d3b87d1',
-    callbackURL: "https://science-hack.herokuapp.com/"
+    callbackURL: "https://science-hack.herokuapp.com/auth/springrole/callback"
   },
   function(accessToken, refreshToken, profile, done) {
   	console.log(accessToken, refreshToken);
